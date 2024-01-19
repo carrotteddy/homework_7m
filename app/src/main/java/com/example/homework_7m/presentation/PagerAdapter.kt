@@ -1,4 +1,4 @@
-package com.example.homework_7m.presentation.adapter
+package com.example.homework_7m.presentation
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

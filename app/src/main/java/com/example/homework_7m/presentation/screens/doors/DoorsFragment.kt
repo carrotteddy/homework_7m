@@ -7,8 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.homework_7m.R
 import com.example.homework_7m.databinding.FragmentDoorsBinding
+import dagger.hilt.EntryPoint
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class DoorsFragment : Fragment() {
 
     private lateinit var binding : FragmentDoorsBinding

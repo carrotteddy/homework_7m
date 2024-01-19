@@ -1,14 +1,14 @@
 package com.example.homework_7m.presentation.screens.cameras
 
-import android.os.Binder
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.homework_7m.databinding.FragmentCamerasBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class CamerasFragment : Fragment() {
 
     private lateinit var binding: FragmentCamerasBinding

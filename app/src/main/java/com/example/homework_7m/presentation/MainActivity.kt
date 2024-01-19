@@ -1,13 +1,14 @@
 package com.example.homework_7m.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.homework_7m.databinding.ActivityMainBinding
-import com.example.homework_7m.presentation.adapter.PagerAdapter
 import com.example.homework_7m.presentation.screens.cameras.CamerasFragment
 import com.example.homework_7m.presentation.screens.doors.DoorsFragment
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
