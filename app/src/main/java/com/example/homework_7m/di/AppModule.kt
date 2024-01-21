@@ -1,64 +1,70 @@
 package com.example.homework_7m.di
 
-import com.example.homework_7m.utils.Constants.API_KEY
-import com.example.homework_7m.utils.Constants.BASE_URL
-import com.example.homework_7m.utils.Constants.NETWORK_TIMEOUT
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
+import android.content.Context
+import androidx.room.Room
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
+import com.example.homework_7m.data.api.HouseApi
+import com.example.homework_7m.data.local.db.CameraDao
+import com.example.homework_7m.data.local.db.DoorDao
+import com.example.homework_7m.data.local.db.HouseDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import javax.inject.Singleton
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
-    @Provides
-    @Singleton
-    fun provideBaseUrl(): String {
-        return BASE_URL
-    }
-
-    @Provides
-    @Singleton
-    fun provideConnectionTimeout(): Long {
-        return NETWORK_TIMEOUT
-    }
-
-    @Provides
-    @Singleton
-    fun provideGson(): Gson = GsonBuilder().setLenient().create()
-
-    @Singleton
-    @Provides
-    fun provideOkHttpClient(baseUrl: String): OkHttpClient {
-        val loggingInterceptor = HttpLoggingInterceptor()
-        loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-
-        val requestInterceptor = Interceptor { chain ->
-            val url = chain.request()
-                .url
-                .newBuilder()
-                .addQueryParameter("api_key", API_KEY ?: "")
-                .build()
-
-            val request = chain.request()
-                .newBuilder()
-                .url(url)
-                .build()
-
-            chain.proceed(request)
+    val MIGRATION_1_2: Migration = object : Migration(1,2){
+        override fun migrate(database: SupportSQLiteDatabase) {
+            database.execSQL("ALTER TABLE camera_table ADD COLUMN new_column TEXT")
         }
+    }
 
-        return OkHttpClient.Builder()
-            .addInterceptor(requestInterceptor)
-            .addInterceptor(loggingInterceptor)
+    @Provides
+    fun provideAppDatabase(@ApplicationContext context: Context): HouseDatabase =
+        Room.databaseBuilder(context, HouseDatabase::class.java, "house database")
+            .allowMainThreadQueries()
+            .addMigrations(MIGRATION_1_2)
+            .build()
+
+    @Provides
+    fun provideCameraDao(@ApplicationContext context: Context): CameraDao =
+        provideAppDatabase(context).getCameraDao()
+
+    @Provides
+    fun provideDoorDao(houseDatabase: HouseDatabase): DoorDao = houseDatabase.getDoorDao()
+
+    @Provides
+    fun provideRetrofit(): Retrofit {
+
+        val interceptor = HttpLoggingInterceptor()
+            .setLevel(HttpLoggingInterceptor.Level.BODY)
+
+        val okHttpClient =
+            OkHttpClient().newBuilder()
+                .connectTimeout(20, TimeUnit.SECONDS)
+                .writeTimeout(20, TimeUnit.SECONDS)
+                .readTimeout(20, TimeUnit.SECONDS)
+                .addInterceptor(interceptor)
+                .build()
+
+        return Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl("http://cars.cprogroup.ru/api/rubetek/")
+            .client(okHttpClient)
             .build()
     }
+
+    @Provides
+    fun provideHouseApiService(retrofit: Retrofit): HouseApi = retrofit.create(HouseApi::class.java)
 
 }

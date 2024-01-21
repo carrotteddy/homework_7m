@@ -1,9 +1,9 @@
 package com.example.homework_7m.domain.usecases.cameras
 
 
-import com.example.homework_7m.domain.CameraModel
+import com.example.homework_7m.domain.models.CameraModel
 import com.example.homework_7m.domain.repositories.CamerasRepository
-import com.example.homework_7m.utils.Resource
+import com.example.homework_7m.domain.utils.Resource
 import kotlinx.coroutines.flow.Flow
 
 import javax.inject.Inject

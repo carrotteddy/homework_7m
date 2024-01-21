@@ -1,7 +1,7 @@
 package com.example.homework_7m.domain.repositories
 
-import com.example.homework_7m.domain.CameraModel
-import com.example.homework_7m.utils.Resource
+import com.example.homework_7m.domain.models.CameraModel
+import com.example.homework_7m.domain.utils.Resource
 import kotlinx.coroutines.flow.Flow
 
 
@@ -20,4 +20,5 @@ interface CamerasRepository {
     fun updateLocalCameras(cameraModels: List<CameraModel>)
 
     fun deleteCamera(cameraModel: CameraModel)
+
 }

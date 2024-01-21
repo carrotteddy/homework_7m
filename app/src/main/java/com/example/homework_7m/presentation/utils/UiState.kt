@@ -1,4 +1,4 @@
-package com.example.homework_7m.utils
+package com.example.homework_7m.presentation.utils
 
 sealed class UiState<T>(
     val data: T? = null,

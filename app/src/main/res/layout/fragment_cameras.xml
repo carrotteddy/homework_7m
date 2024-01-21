@@ -7,7 +7,7 @@
     android:background="@color/silver"
     android:orientation="vertical"
     android:paddingHorizontal="20dp"
-    tools:context=".presentation.screens.cameras.CamerasFragment">
+    tools:context=".presentation.ui.fragments.cameras.CamerasFragment">
 
 
     <TextView

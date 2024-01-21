@@ -1,4 +1,4 @@
-package com.example.homework_7m.utils
+package com.example.homework_7m.data.utils
 
 object Constants {
     const val EMPTY_STRING = ""

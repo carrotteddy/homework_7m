@@ -1,8 +1,8 @@
 package com.example.homework_7m.domain.usecases.doors
 
-import com.example.homework_7m.domain.DoorModel
+import com.example.homework_7m.domain.models.DoorModel
 import com.example.homework_7m.domain.repositories.DoorsRepository
-import com.example.homework_7m.utils.Resource
+import com.example.homework_7m.domain.utils.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject

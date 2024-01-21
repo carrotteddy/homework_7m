@@ -2,8 +2,8 @@ package com.example.homework_7m.data.dtos
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.homework_7m.domain.DoorModel
-import com.example.homework_7m.utils.Constants.EMPTY_STRING
+import com.example.homework_7m.domain.models.DoorModel
+import com.example.homework_7m.data.utils.Constants.EMPTY_STRING
 import com.google.gson.annotations.SerializedName
 
 data class DoorsDto(

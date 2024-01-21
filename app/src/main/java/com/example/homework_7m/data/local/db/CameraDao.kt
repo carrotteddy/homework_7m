@@ -28,4 +28,10 @@ interface CameraDao {
     @Delete
     fun deleteCamera(camera: CameraDto)
 
+    companion object {
+        fun delete(camera: Int) {
+            CameraDao.delete(camera)
+        }
+    }
+
 }

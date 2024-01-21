@@ -1,7 +1,7 @@
 package com.example.homework_7m.domain.repositories
 
-import com.example.homework_7m.domain.DoorModel
-import com.example.homework_7m.utils.Resource
+import com.example.homework_7m.domain.models.DoorModel
+import com.example.homework_7m.domain.utils.Resource
 import kotlinx.coroutines.flow.Flow
 
 interface DoorsRepository {

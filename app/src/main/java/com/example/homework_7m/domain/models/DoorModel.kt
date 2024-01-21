@@ -1,4 +1,4 @@
-package com.example.homework_7m.domain
+package com.example.homework_7m.domain.models
 
 data class DoorModel(
     val id: Long,

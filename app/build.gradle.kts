@@ -1,8 +1,9 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("kotlin-kapt")
+    kotlin("kapt")
     id("com.google.dagger.hilt.android")
+    id("kotlin-android")
 }
 
 android {
@@ -50,10 +51,14 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
-    // Room db
+    // Room
     val roomVersion = "2.5.2"
+    //noinspection GradleDependency
     implementation("androidx.room:room-runtime:$roomVersion")
+    //noinspection GradleDependency
     annotationProcessor("androidx.room:room-compiler:$roomVersion")
+    // To use Kotlin annotation processing tool (kapt)
+    //noinspection KaptUsageInsteadOfKsp,GradleDependency
     kapt("androidx.room:room-compiler:$roomVersion")
 
     // Retrofit
@@ -65,8 +70,8 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2")
 
     // Dagger Hilt
-    implementation("com.google.dagger:hilt-android:2.44")
-    kapt("com.google.dagger:hilt-android-compiler:2.44")
+    implementation("com.google.dagger:hilt-android:2.48.1")
+    kapt("com.google.dagger:hilt-android-compiler:2.47")
 
     // Coil
     implementation("io.coil-kt:coil:2.4.0")
@@ -77,8 +82,10 @@ dependencies {
     // SwipeRefreshLayout
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
-     //okhttp
-    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.12.0"))
-    implementation("com.squareup.okhttp3:okhttp")
-    implementation("com.squareup.okhttp3:logging-interceptor")
+    //RecyclerViewSwipeDecorator
+    implementation("it.xabaras.android:recyclerview-swipedecorator:1.4")
+
+    //Paging 3
+    implementation("androidx.paging:paging-runtime-ktx:3.2.1")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 }

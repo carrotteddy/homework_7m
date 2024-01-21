@@ -1,10 +1,10 @@
-package com.example.homework_7m.presentation
+package com.example.homework_7m.presentation.ui.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.homework_7m.databinding.ActivityMainBinding
-import com.example.homework_7m.presentation.screens.cameras.CamerasFragment
-import com.example.homework_7m.presentation.screens.doors.DoorsFragment
+import com.example.homework_7m.presentation.ui.fragments.cameras.CamerasFragment
+import com.example.homework_7m.presentation.ui.fragments.doors.DoorsFragment
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 

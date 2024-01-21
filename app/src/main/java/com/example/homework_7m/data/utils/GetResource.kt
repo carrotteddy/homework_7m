@@ -1,6 +1,7 @@
-package com.example.homework_7m.utils
+package com.example.homework_7m.data.utils
 
-import com.example.homework_7m.utils.Constants.CONNECTION_ERROR
+import com.example.homework_7m.data.utils.Constants.CONNECTION_ERROR
+import com.example.homework_7m.domain.utils.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn

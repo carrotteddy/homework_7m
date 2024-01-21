@@ -1,4 +1,4 @@
-package com.example.homework_7m.utils
+package com.example.homework_7m.domain.utils
 
 sealed class Resource<T>(
     val data: T? = null,

@@ -28,4 +28,10 @@ interface DoorDao {
     @Delete
     fun deleteDoor(door: DoorDto)
 
+    companion object {
+        fun delete(doors: Int) {
+            DoorDao.delete(doors)
+        }
+    }
+
 }

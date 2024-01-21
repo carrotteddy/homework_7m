@@ -4,9 +4,9 @@ import com.example.homework_7m.data.api.HouseApi
 import com.example.homework_7m.data.dtos.toDataDto
 import com.example.homework_7m.data.dtos.toDomainModel
 import com.example.homework_7m.data.local.db.CameraDao
-import com.example.homework_7m.domain.CameraModel
+import com.example.homework_7m.domain.models.CameraModel
 import com.example.homework_7m.domain.repositories.CamerasRepository
-import com.example.homework_7m.utils.GetResource
+import com.example.homework_7m.data.utils.GetResource
 import javax.inject.Inject
 
 class CameraRepositoriesImpl @Inject constructor(
